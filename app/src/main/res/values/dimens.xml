@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <dimen name="standard">16dp</dimen>
+  <dimen name="standard_half">8dp</dimen>
+  <dimen name="standard_quoter">4dp</dimen>
+  <dimen name="standard_double">32dp</dimen>
+  <dimen name="standard_triple">46dp</dimen>
+</resources>
