@@ -59,14 +59,10 @@ abstract class BaseFragment(@get:LayoutRes val layoutId: Int) : Fragment() {
   /**
    * Override in fragment and process UI stuff that you need
    */
-  open fun setupUI() {
-
-  }
+  open fun setupUI() {}
 
   /**
    * Override in fragment and setup listeners
    */
-  open fun setupListeners() {
-
-  }
+  open fun setupListeners() {}
 }

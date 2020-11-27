@@ -11,7 +11,9 @@ class MovieMapper @Inject constructor() {
   fun toEntity(data: Movie) = MovieEntity(
       id = data.id,
       name = data.title,
-      poster = data.poster
+      poster = data.poster,
+      runtime = data.runtime,
+      overview = data.overview
   )
 
   fun toModels(data: List<MovieEntity>) = data.map { toModel(it) }
@@ -19,6 +21,8 @@ class MovieMapper @Inject constructor() {
   fun toModel(data: MovieEntity) = Movie(
       id = data.id,
       title = data.name,
-      poster = data.poster
+      poster = data.poster,
+      runtime = data.runtime,
+      overview = data.overview
   )
 }

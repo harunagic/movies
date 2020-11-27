@@ -16,14 +16,10 @@ abstract class BaseActivity(@get:LayoutRes val layoutId: Int) : FragmentActivity
   /**
    * Override in activity and process UI stuff that you need
    */
-  open fun setupUI() {
-
-  }
+  open fun setupUI() {}
 
   /**
    * Override in activity and setup listeners
    */
-  open fun setupListeners() {
-
-  }
+  open fun setupListeners() {}
 }

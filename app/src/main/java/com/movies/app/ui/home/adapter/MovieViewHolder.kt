@@ -6,6 +6,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withC
 import com.movies.app.data.api.model.Movie
 import com.movies.app.ui.base.BaseListViewHolder
 import kotlinx.android.synthetic.main.movie_list_item.view.imgPoster
+import kotlinx.android.synthetic.main.movie_list_item.view.txtOverview
 import kotlinx.android.synthetic.main.movie_list_item.view.txtTitle
 
 class MovieViewHolder(
@@ -16,6 +17,9 @@ class MovieViewHolder(
   override fun bind(item: Movie) {
     // Title
     itemView.txtTitle.text = item.title
+
+    // Runtime
+    itemView.txtOverview.text = item.overview
 
     // Poster
     Glide.with(itemView)
