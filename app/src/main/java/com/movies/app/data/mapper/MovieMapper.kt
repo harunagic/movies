@@ -13,7 +13,8 @@ class MovieMapper @Inject constructor() {
       name = data.title,
       poster = data.poster,
       runtime = data.runtime,
-      overview = data.overview
+      overview = data.overview,
+      releaseDate = data.releaseDate
   )
 
   fun toModels(data: List<MovieEntity>) = data.map { toModel(it) }
@@ -23,6 +24,7 @@ class MovieMapper @Inject constructor() {
       title = data.name,
       poster = data.poster,
       runtime = data.runtime,
-      overview = data.overview
+      overview = data.overview,
+      releaseDate = data.releaseDate
   )
 }

@@ -12,5 +12,7 @@ data class Movie(
   @SerializedName("runtime")
   val runtime: String?,
   @SerializedName("overview")
-  val overview: String?
+  val overview: String?,
+  @SerializedName("release_date")
+  val releaseDate: String?
 )

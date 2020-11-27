@@ -37,11 +37,20 @@
           />
 
       <TextView
+          android:id="@+id/txtReleaseDate"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="@dimen/standard_half"
+          android:textColor="?colorOnSurface"
+          android:textSize="14sp"
+          />
+
+      <TextView
           android:id="@+id/txtOverview"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:ellipsize="marquee"
-          android:maxLines="5"
+          android:maxLines="4"
           android:textColor="?colorSecondaryVariant"
           android:textSize="16sp"
           />
