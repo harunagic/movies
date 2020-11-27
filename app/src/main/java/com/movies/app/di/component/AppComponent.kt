@@ -3,6 +3,7 @@ package com.movies.app.di.component
 import com.movies.app.App
 import com.movies.app.di.module.ApiModule
 import com.movies.app.di.module.AppModule
+import com.movies.app.di.module.DatabaseModule
 import com.movies.app.ui.home.HomeFragment
 import dagger.Component
 import javax.inject.Singleton
@@ -11,7 +12,8 @@ import javax.inject.Singleton
 @Component(
     modules = [
       AppModule::class,
-      ApiModule::class
+      ApiModule::class,
+      DatabaseModule::class
     ]
 )
 interface AppComponent {

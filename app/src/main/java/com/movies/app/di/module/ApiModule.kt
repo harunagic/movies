@@ -3,7 +3,7 @@ package com.movies.app.di.module
 import com.google.gson.Gson
 import com.movies.app.App
 import com.movies.app.R
-import com.movies.app.data.ApiService
+import com.movies.app.data.api.ApiService
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
