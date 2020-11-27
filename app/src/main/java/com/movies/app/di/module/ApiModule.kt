@@ -4,6 +4,7 @@ import com.google.gson.Gson
 import com.movies.app.App
 import com.movies.app.R
 import com.movies.app.data.api.ApiService
+import com.movies.app.data.api.interceptor.AuthInterceptor
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -18,7 +19,7 @@ class ApiModule constructor(private val app: App) {
 
   @Singleton
   @Provides
-  fun providesApiUrl() = "https://superheroapi.com/api/${app.getString(R.string.movies_api_key)}/"
+  fun providesApiUrl() = "https://api.themoviedb.org/3/"
 
   @Singleton
   @Provides
@@ -27,6 +28,7 @@ class ApiModule constructor(private val app: App) {
     val logging = HttpLoggingInterceptor()
     logging.level = HttpLoggingInterceptor.Level.BODY
     httpClient.addInterceptor(logging)
+    httpClient.addInterceptor(AuthInterceptor(app.getString(R.string.movies_api_key)))
     return httpClient.build()
   }
 
