@@ -1,44 +1,44 @@
-package com.movies.app.ui.movie
+package com.movies.app.ui.movie_details
 
 import com.movies.app.data.repository.MovieRepository
 import com.movies.app.misc.flatMapToViewState
 import com.movies.app.ui.base.BasePresenter
 import javax.inject.Inject
 
-class MoviePresenter @Inject constructor(
+class MovieDetailsPresenter @Inject constructor(
   private val movieRepository: MovieRepository
-) : BasePresenter<MovieView, MovieResult, MovieUIState>() {
+) : BasePresenter<MovieDetailsView, MovieDetailsResult, MovieDetailsUIState>() {
 
-  override fun initialState(): MovieUIState = MovieUIState()
+  override fun initialState(): MovieDetailsUIState = MovieDetailsUIState()
 
   override fun bind() {
-    val moviesObs = intent(MovieView::onCreated)
+    val moviesObs = intent(MovieDetailsView::onCreated)
         .flatMapToViewState(
-            { movieRepository.getMovies(forceRemote = true) },
-            { MoviesPartialViewState(it) },
+            { movieRepository.getMovieById(forceRemote = true, id = it) },
+            { MoviePartialViewState(it) },
             { ErrorPartialViewState(it.localizedMessage) },
             { LoadingPartialViewState(true) }
         )
 
     subscribeForStateUpdates(
         mergeResults(moviesObs),
-        MovieView::update
+        MovieDetailsView::update
     )
   }
 
   override fun reduce(
-    state: MovieUIState,
-    result: MovieResult
-  ): MovieUIState = when (result) {
+    state: MovieDetailsUIState,
+    result: MovieDetailsResult
+  ): MovieDetailsUIState = when (result) {
     is LoadingPartialViewState -> state.copy(
         loading = result.loading
     )
     is ErrorPartialViewState -> state.copy(
         error = result.error
     )
-    is MoviesPartialViewState -> state.copy(
+    is MoviePartialViewState -> state.copy(
         loading = false,
-        movies = result.movies
+        movie = result.movie
     )
   }
 }

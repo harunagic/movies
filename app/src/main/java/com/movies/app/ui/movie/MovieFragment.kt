@@ -3,6 +3,7 @@ package com.movies.app.ui.movie
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.lifecycle.Lifecycle.Event
+import androidx.navigation.fragment.findNavController
 import com.movies.app.R
 import com.movies.app.data.api.model.Movie
 import com.movies.app.di.component.AppComponent
@@ -35,7 +36,7 @@ class MovieFragment : BaseFragment(R.layout.movie_fragment), MovieView {
   override fun setupListeners() {
     movieAdapter.callback = object : MovieCallback {
       override fun onMovieClicked(item: Movie) {
-        //todo navigate to details screen
+        findNavController().navigate(MovieFragmentDirections.actionMovieFragmentToMovieDetailsFragment(item.id))
       }
     }
   }

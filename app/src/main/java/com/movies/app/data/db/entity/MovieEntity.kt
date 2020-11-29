@@ -1,5 +1,6 @@
 package com.movies.app.data.db.entity
 
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -7,9 +8,15 @@ import androidx.room.PrimaryKey
 data class MovieEntity(
   @PrimaryKey
   val id: String,
-  val name: String?,
+  val title: String?,
+  val tagline: String?,
   val poster: String?,
+  val backdrop: String?,
   val runtime: String?,
   val overview: String?,
-  val releaseDate: String?
+  val releaseDate: String?,
+  @Embedded
+  val genres: ArrayList<GenreEntity>?,
+  @Embedded
+  val languages: ArrayList<LanguageEntity>?
 )

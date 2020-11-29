@@ -7,7 +7,6 @@ import com.movies.app.data.mapper.MovieMapper
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import timber.log.Timber
 import javax.inject.Inject
 
 class MovieRepository @Inject constructor(
@@ -24,7 +23,7 @@ class MovieRepository @Inject constructor(
     forceRemote: Boolean = false
   ): Observable<List<Movie>> = when {
     forceRemote -> getMoviesFromApi()
-    else -> getFromDatabase()
+    else -> getMoviesFromDatabase()
   }.subscribeOn(Schedulers.io())
       .observeOn(AndroidSchedulers.mainThread())
 
@@ -33,17 +32,41 @@ class MovieRepository @Inject constructor(
    */
   private fun getMoviesFromApi(): Observable<List<Movie>> = apiService.getMovies()
       .doOnNext { movieDao.insert(movieMapper.toEntities(it.results)) }
-      .doOnNext { Timber.d("Data loaded from API!") }
       .map { it.results }
 
   /**
    * @return list of movies from local database, if list is empty then try to fetch from API
    */
-  private fun getFromDatabase(): Observable<List<Movie>> = movieDao.get()
+  private fun getMoviesFromDatabase(): Observable<List<Movie>> = movieDao.get()
       .map { movieMapper.toModels(it) }
-      .doOnNext { Timber.d("Data loaded from local database!") }
       .flatMap {
         if (it.isEmpty()) getMoviesFromApi()
         else Observable.just(it)
       }
+
+  /**
+   * @param forceRemote if true movie will be loaded from API
+   * @return movie by id
+   */
+  fun getMovieById(
+    forceRemote: Boolean = false,
+    id: String
+  ): Observable<Movie> = when {
+    forceRemote -> getMovieByIdFromApi(id)
+    else -> getMovieByIdFromDatabase(id)
+  }.subscribeOn(Schedulers.io())
+      .observeOn(AndroidSchedulers.mainThread())
+
+  /**
+   * @return movie by id from API
+   */
+  private fun getMovieByIdFromApi(id: String): Observable<Movie> = apiService.getMovieById(id)
+      .doOnNext { movieDao.insert(movieMapper.toEntity(it)) }
+
+  /**
+   * @return movie by id from local database, if list is empty then try to fetch from API
+   */
+  private fun getMovieByIdFromDatabase(id: String): Observable<Movie> = movieDao.get(id)
+      .map { movieMapper.toModel(it) }
+      .onErrorResumeNext(getMovieByIdFromApi(id))
 }
