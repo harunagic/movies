@@ -7,12 +7,20 @@ data class Movie(
   val id: String,
   @SerializedName("title")
   val title: String?,
+  @SerializedName("tagline")
+  val tagline: String?,
   @SerializedName("poster_path")
   val poster: String?,
+  @SerializedName("backdrop_path")
+  val backdrop: String?,
   @SerializedName("runtime")
   val runtime: String?,
   @SerializedName("overview")
   val overview: String?,
   @SerializedName("release_date")
-  val releaseDate: String?
+  val releaseDate: String?,
+  @SerializedName("genres")
+  val genres: ArrayList<Genre>?,
+  @SerializedName("spoken_languages")
+  val languages: ArrayList<Language>?
 )

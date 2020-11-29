@@ -1,10 +1,10 @@
-package com.movies.app.ui.home
+package com.movies.app.ui.movie
 
 import androidx.lifecycle.Lifecycle
 import com.movies.app.ui.base.BaseView
 import io.reactivex.Observable
 
-interface HomeView : BaseView {
+interface MovieView : BaseView {
   fun onCreated(): Observable<Lifecycle.Event>
-  fun update(uiState: HomeUIState)
+  fun update(uiState: MovieUIState)
 }

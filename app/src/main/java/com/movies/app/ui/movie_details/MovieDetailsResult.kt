@@ -1,27 +1,27 @@
-package com.movies.app.ui.home
+package com.movies.app.ui.movie_details
 
 import com.movies.app.data.api.model.Movie
 
-sealed class HomeResult(
+sealed class MovieDetailsResult(
   val loading: Boolean = false,
   val error: String? = null,
-  val movies: List<Movie>? = null,
+  val movie: Movie? = null,
 )
 
 class LoadingPartialViewState(
   loading: Boolean
-) : HomeResult(
+) : MovieDetailsResult(
     loading = loading
 )
 
 class ErrorPartialViewState(
   error: String?
-) : HomeResult(
+) : MovieDetailsResult(
     error = error
 )
 
-class MoviesPartialViewState(
-  movies: List<Movie>? = null
-) : HomeResult(
-    movies = movies
+class MoviePartialViewState(
+  movie: Movie? = null
+) : MovieDetailsResult(
+    movie = movie
 )
