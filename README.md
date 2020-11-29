@@ -18,6 +18,10 @@ App uses [Square](https://github.com/square/java-code-styles) coding styles.
 [Here's](https://github.com/square/java-code-styles/blob/main/README.md) how to configure it for use with Android Studio
 (instructions adapted from Sqaure README)
 
+Screenshots
+-----------
+<img src="screenshots/ss1.png" width="250" style="padding-right:10px"/><img src="screenshots/ss2.png" width="250" style="padding-right:10px"/>
+
 Architecture
 --------------
 **Model–View–Intent (MVI)** is one of the newest architecture patterns for Android, inspired by the unidirectional and cyclical nature of the  _Cycle.js_  framework.
