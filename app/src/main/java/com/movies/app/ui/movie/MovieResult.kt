@@ -1,4 +1,4 @@
-package com.movies.app.ui.home
+package com.movies.app.ui.movie
 
 import com.movies.app.data.api.model.Movie
 

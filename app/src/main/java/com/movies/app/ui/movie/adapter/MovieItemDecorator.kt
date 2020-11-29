@@ -1,4 +1,4 @@
-package com.movies.app.ui.home.adapter
+package com.movies.app.ui.movie.adapter
 
 import android.graphics.Rect
 import android.view.View

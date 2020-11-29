@@ -4,7 +4,7 @@ import com.movies.app.App
 import com.movies.app.di.module.ApiModule
 import com.movies.app.di.module.AppModule
 import com.movies.app.di.module.DatabaseModule
-import com.movies.app.ui.home.HomeFragment
+import com.movies.app.ui.movie.MovieFragment
 import dagger.Component
 import javax.inject.Singleton
 
@@ -18,5 +18,5 @@ import javax.inject.Singleton
 )
 interface AppComponent {
   fun inject(app: App)
-  fun inject(fragment: HomeFragment)
+  fun inject(fragment: MovieFragment)
 }

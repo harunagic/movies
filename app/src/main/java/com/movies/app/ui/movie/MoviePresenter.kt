@@ -1,18 +1,18 @@
-package com.movies.app.ui.home
+package com.movies.app.ui.movie
 
 import com.movies.app.data.repository.MovieRepository
 import com.movies.app.misc.flatMapToViewState
 import com.movies.app.ui.base.BasePresenter
 import javax.inject.Inject
 
-class HomePresenter @Inject constructor(
+class MoviePresenter @Inject constructor(
   private val movieRepository: MovieRepository
-) : BasePresenter<HomeView, HomeResult, HomeUIState>() {
+) : BasePresenter<MovieView, HomeResult, MovieUIState>() {
 
-  override fun initialState(): HomeUIState = HomeUIState()
+  override fun initialState(): MovieUIState = MovieUIState()
 
   override fun bind() {
-    val moviesObs = intent(HomeView::onCreated)
+    val moviesObs = intent(MovieView::onCreated)
         .flatMapToViewState(
             { movieRepository.getMovies(forceRemote = true) },
             { MoviesPartialViewState(it) },
@@ -22,14 +22,14 @@ class HomePresenter @Inject constructor(
 
     subscribeForStateUpdates(
         mergeResults(moviesObs),
-        HomeView::update
+        MovieView::update
     )
   }
 
   override fun reduce(
-    state: HomeUIState,
+    state: MovieUIState,
     result: HomeResult
-  ): HomeUIState = when (result) {
+  ): MovieUIState = when (result) {
     is LoadingPartialViewState -> state.copy(
         loading = result.loading
     )
