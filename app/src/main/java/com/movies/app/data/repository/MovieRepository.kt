@@ -2,6 +2,7 @@ package com.movies.app.data.repository
 
 import com.movies.app.data.api.ApiService
 import com.movies.app.data.api.model.Movie
+import com.movies.app.data.api.model.response.MovieResponse
 import com.movies.app.data.db.dao.MovieDao
 import com.movies.app.data.mapper.MovieMapper
 import io.reactivex.Observable
@@ -20,27 +21,32 @@ class MovieRepository @Inject constructor(
    * @return list of movies
    */
   fun getMovies(
-    forceRemote: Boolean = false
-  ): Observable<List<Movie>> = when {
-    forceRemote -> getMoviesFromApi()
-    else -> getMoviesFromDatabase()
+    forceRemote: Boolean = false,
+    page: Int = 1
+  ): Observable<MovieResponse> = when {
+    forceRemote -> getMoviesFromApi(page)
+    else -> getMoviesFromDatabase(page)
   }.subscribeOn(Schedulers.io())
       .observeOn(AndroidSchedulers.mainThread())
 
   /**
    * @return list of movies from API
    */
-  private fun getMoviesFromApi(): Observable<List<Movie>> = apiService.getMovies()
+  private fun getMoviesFromApi(
+    page: Int
+  ): Observable<MovieResponse> = apiService.getMovies(page)
       .doOnNext { movieDao.insert(movieMapper.toEntities(it.results)) }
-      .map { it.results }
 
   /**
    * @return list of movies from local database, if list is empty then try to fetch from API
    */
-  private fun getMoviesFromDatabase(): Observable<List<Movie>> = movieDao.get()
+  private fun getMoviesFromDatabase(
+    page: Int
+  ): Observable<MovieResponse> = movieDao.get()
       .map { movieMapper.toModels(it) }
+      .map { MovieResponse(results = it) }
       .flatMap {
-        if (it.isEmpty()) getMoviesFromApi()
+        if (it.results.isNullOrEmpty()) getMoviesFromApi(page)
         else Observable.just(it)
       }
 
@@ -50,7 +56,7 @@ class MovieRepository @Inject constructor(
    */
   fun getMovieById(
     forceRemote: Boolean = false,
-    id: String
+    id: Int
   ): Observable<Movie> = when {
     forceRemote -> getMovieByIdFromApi(id)
     else -> getMovieByIdFromDatabase(id)
@@ -60,13 +66,13 @@ class MovieRepository @Inject constructor(
   /**
    * @return movie by id from API
    */
-  private fun getMovieByIdFromApi(id: String): Observable<Movie> = apiService.getMovieById(id)
+  private fun getMovieByIdFromApi(id: Int): Observable<Movie> = apiService.getMovieById(id)
       .doOnNext { movieDao.insert(movieMapper.toEntity(it)) }
 
   /**
    * @return movie by id from local database, if list is empty then try to fetch from API
    */
-  private fun getMovieByIdFromDatabase(id: String): Observable<Movie> = movieDao.get(id)
+  private fun getMovieByIdFromDatabase(id: Int): Observable<Movie> = movieDao.get(id)
       .map { movieMapper.toModel(it) }
       .onErrorResumeNext(getMovieByIdFromApi(id))
 }

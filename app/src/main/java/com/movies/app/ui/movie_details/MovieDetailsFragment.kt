@@ -29,7 +29,7 @@ class MovieDetailsFragment : BaseFragment(R.layout.movie_details_fragment), Movi
     appComponent.inject(this)
   }
 
-  override fun onCreated(): Observable<String> = RxLifecycle.onStart(this)
+  override fun onCreated(): Observable<Int> = RxLifecycle.onStart(this)
       .map { args.id }
 
   override fun update(uiState: MovieDetailsUIState) {

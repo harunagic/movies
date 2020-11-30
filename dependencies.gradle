@@ -19,6 +19,7 @@ versions.dagger = "2.13"
 versions.daggerAnnotation = '10.0-b28'
 versions.rx = "2.3.0"
 versions.rxAndroid = "2.1.1"
+versions.rxBinding = "3.0.0-alpha2"
 versions.rxLifecycle = "2.0.5"
 versions.glide = '4.10.0'
 versions.glideTransformations = '4.0.0'
@@ -70,6 +71,7 @@ deps.dagger = dagger
 def rx = [:]
 rx.runtime = "io.reactivex.rxjava2:rxkotlin:$versions.rx"
 rx.android = "io.reactivex.rxjava2:rxandroid:$versions.rxAndroid"
+rx.binding = "com.jakewharton.rxbinding3:rxbinding-appcompat:$versions.rxBinding"
 rx.lifecycle = "com.github.florent37:rxlifecycle:$versions.rxLifecycle"
 deps.rx = rx
 

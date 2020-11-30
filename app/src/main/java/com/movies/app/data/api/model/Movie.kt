@@ -1,10 +1,11 @@
 package com.movies.app.data.api.model
 
 import com.google.gson.annotations.SerializedName
+import com.movies.app.common.model.Model
 
 data class Movie(
   @SerializedName("id")
-  val id: String,
+  val id: Int,
   @SerializedName("title")
   val title: String?,
   @SerializedName("tagline")
@@ -23,4 +24,6 @@ data class Movie(
   val genres: ArrayList<Genre>?,
   @SerializedName("spoken_languages")
   val languages: ArrayList<Language>?
-)
+) : Model<Int> {
+  override fun id(): Int = id
+}
