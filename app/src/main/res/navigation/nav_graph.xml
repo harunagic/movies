@@ -3,7 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/movieFragment">
+    app:startDestination="@id/splashFragment">
+
+  <fragment
+      android:id="@+id/splashFragment"
+      android:label="MovieFragment"
+      android:name="com.movies.app.ui.splash.SplashFragment"
+      tools:layout="@layout/splash_fragment">
+    <action
+        android:id="@+id/action_splashFragment_to_movieFragment"
+        app:destination="@id/movieFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+  </fragment>
 
   <fragment
       android:id="@+id/movieFragment"
