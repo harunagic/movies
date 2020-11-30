@@ -5,12 +5,13 @@ import com.movies.app.data.api.model.response.MovieResponse
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ApiService {
 
   @GET("discover/movie")
-  fun getMovies(): Observable<MovieResponse>
+  fun getMovies(@Query("page") page: Int): Observable<MovieResponse>
 
   @GET("movie/{id}")
-  fun getMovieById(@Path("id") id: String): Observable<Movie>
+  fun getMovieById(@Path("id") id: Int): Observable<Movie>
 }

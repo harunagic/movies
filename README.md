@@ -20,8 +20,7 @@ App uses [Square](https://github.com/square/java-code-styles) coding styles.
 
 Screenshots
 -----------
-<img src="screenshots/ss1.png" width="250"/>
-<img src="screenshots/ss2.png" width="250"/>
+<img src="screenshots/ss1.png" width="250" style="padding-right:10px"/><img src="screenshots/ss2.png" width="250" style="padding-right:10px"/>
 
 Architecture
 --------------

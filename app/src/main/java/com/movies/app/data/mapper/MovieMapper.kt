@@ -9,7 +9,7 @@ class MovieMapper @Inject constructor(
   private val languageMapper: LanguageMapper
 ) {
 
-  fun toEntities(data: List<Movie>) = data.map { toEntity(it) }
+  fun toEntities(data: List<Movie>?) = data?.map { toEntity(it) } ?: listOf()
 
   fun toEntity(data: Movie) = MovieEntity(
       id = data.id,

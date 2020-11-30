@@ -58,6 +58,7 @@ dependencies {
   // RX
   implementation deps.rx.runtime
   implementation deps.rx.android
+  implementation deps.rx.binding
   implementation deps.rx.lifecycle
   // Retrofit
   implementation deps.retrofit.runtime
