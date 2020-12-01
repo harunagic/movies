@@ -1,3 +1,4 @@
 <resources>
   <string name="app_name">Movies</string>
+  <string name="looking_for_something_specific">Looking for something specific?</string>
 </resources>

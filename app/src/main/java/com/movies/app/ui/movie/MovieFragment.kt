@@ -3,6 +3,7 @@ package com.movies.app.ui.movie
 import android.widget.Toast
 import androidx.lifecycle.Lifecycle.Event
 import androidx.navigation.fragment.findNavController
+import com.jakewharton.rxbinding3.widget.textChanges
 import com.movies.app.R
 import com.movies.app.common.listener.LoadMoreScrollListener
 import com.movies.app.data.api.model.Movie
@@ -12,6 +13,7 @@ import com.movies.app.ui.movie.adapter.MovieAdapter
 import com.movies.app.ui.movie.adapter.MovieItemDecorator
 import florent37.github.com.rxlifecycle.RxLifecycle
 import io.reactivex.Observable
+import kotlinx.android.synthetic.main.movie_fragment.inputSearch
 import kotlinx.android.synthetic.main.movie_fragment.listMovies
 import javax.inject.Inject
 
@@ -26,7 +28,13 @@ class MovieFragment : BaseFragment(R.layout.movie_fragment), MovieView {
   }
 
   override fun onCreated(): Observable<Event> = RxLifecycle.onStart(this)
-  override fun loadMore(): Observable<Int> = loadMoreScrollListener.loadMoreSubject
+
+  override fun loadMore(): Observable<Pair<Int, String>> = loadMoreScrollListener.loadMoreSubject
+      .map { Pair(it, inputSearch.text.toString()) }
+
+  override fun onSearchQuery(): Observable<String> = inputSearch.textChanges()
+      .map { it.toString() }
+
   override fun movieClicked(): Observable<Movie> = movieAdapter.movieClicked
 
   override fun setupUI() {
@@ -37,7 +45,9 @@ class MovieFragment : BaseFragment(R.layout.movie_fragment), MovieView {
 
   override fun update(uiState: MovieUIState) {
     // Movies state
-    movieAdapter.items = uiState.movies
+    uiState.movies?.let {
+      movieAdapter.items = it
+    }
 
     // Next page state
     loadMoreScrollListener.nextPage = uiState.nextPage
@@ -49,7 +59,8 @@ class MovieFragment : BaseFragment(R.layout.movie_fragment), MovieView {
 
     // Error state
     uiState.error?.let {
-      Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+      Toast.makeText(context, it, Toast.LENGTH_SHORT)
+          .show()
     }
   }
 }

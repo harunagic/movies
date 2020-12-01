@@ -52,9 +52,9 @@
             android:id="@+id/txtTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/ubuntu_bold"
             android:textColor="?colorOnSurface"
             android:textSize="36sp"
-            android:textStyle="bold"
             />
 
         <TextView
@@ -62,6 +62,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/standard_half"
+            android:fontFamily="@font/ubuntu_font"
             android:textColor="?colorOnSurface"
             android:textSize="20sp"
             />
@@ -72,6 +73,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/standard_half"
             android:ellipsize="marquee"
+            android:fontFamily="@font/ubuntu_font"
             android:textColor="?colorSecondaryVariant"
             android:textSize="18sp"
             />
@@ -89,6 +91,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/standard_half"
             android:ellipsize="marquee"
+            android:fontFamily="@font/ubuntu_font"
             android:textColor="?colorOnSurface"
             android:textSize="18sp"
             />
