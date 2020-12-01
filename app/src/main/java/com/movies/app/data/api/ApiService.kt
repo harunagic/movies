@@ -14,4 +14,10 @@ interface ApiService {
 
   @GET("movie/{id}")
   fun getMovieById(@Path("id") id: Int): Observable<Movie>
+
+  @GET("search/movie")
+  fun search(
+    @Query("page") page: Int,
+    @Query("query") query: String
+  ): Observable<MovieResponse>
 }

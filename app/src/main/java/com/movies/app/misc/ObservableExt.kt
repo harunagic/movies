@@ -1,6 +1,7 @@
 package com.movies.app.misc
 
 import io.reactivex.Observable
+import java.util.concurrent.TimeUnit
 
 fun <T, R, VS> Observable<T>.flatMapToViewState(
   source: (T) -> Observable<R>,
@@ -24,15 +25,16 @@ fun <T, R, VS> Observable<T>.flatMapToViewState(
   }
 }
 
-fun <T> Observable<T>.switchNavigationState(
-  navigationStateCheck: (T) -> Boolean,
-  resetState: (T) -> T
-): Observable<T> {
+fun <T> Observable<out T>.resetWith(
+  value: T,
+  duration: Long = 0,
+  timeUnit: TimeUnit = TimeUnit.MILLISECONDS
+): Observable<out T> {
   return this.flatMap {
-    if (navigationStateCheck.invoke(it)) {
-      Observable.fromIterable(listOf(it, resetState.invoke(it)))
-    } else {
-      Observable.just(it)
-    }
+    Observable
+        .just(value)
+        .delay(duration, timeUnit)
+        .startWith(it)
   }
 }
+

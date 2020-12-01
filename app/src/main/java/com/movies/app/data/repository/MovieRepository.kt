@@ -51,6 +51,17 @@ class MovieRepository @Inject constructor(
       }
 
   /**
+   * @param query word or search term that we use to find movies
+   * @return list of movies
+   */
+  fun search(
+    page: Int = 1,
+    query: String
+  ): Observable<MovieResponse> = apiService.search(page, query)
+      .subscribeOn(Schedulers.io())
+      .observeOn(AndroidSchedulers.mainThread())
+
+  /**
    * @param forceRemote if true movie will be loaded from API
    * @return movie by id
    */
@@ -75,4 +86,5 @@ class MovieRepository @Inject constructor(
   private fun getMovieByIdFromDatabase(id: Int): Observable<Movie> = movieDao.get(id)
       .map { movieMapper.toModel(it) }
       .onErrorResumeNext(getMovieByIdFromApi(id))
+
 }

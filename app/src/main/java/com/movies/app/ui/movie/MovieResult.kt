@@ -26,6 +26,13 @@ class MoviesPartialViewState(
     nextPage = movies.page?.plus(1) ?: 0
 )
 
+class MoreMoviesPartialViewState(
+  movies: MovieResponse
+) : MovieResult(
+    movies = movies.results ?: listOf(),
+    nextPage = movies.page?.plus(1) ?: 0
+)
+
 class MovieDetailsPartialViewState(
   movieDetails: Movie? = null
 ) : MovieResult(

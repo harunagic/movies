@@ -7,7 +7,8 @@ import io.reactivex.Observable
 
 interface MovieView : BaseView {
   fun onCreated(): Observable<Lifecycle.Event>
-  fun loadMore(): Observable<Int>
+  fun loadMore(): Observable<Pair<Int, String>>
+  fun onSearchQuery() : Observable<String>
   fun movieClicked(): Observable<Movie>
   fun update(uiState: MovieUIState)
 }
