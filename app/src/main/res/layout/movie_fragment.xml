@@ -21,34 +21,57 @@
         app:contentInsetStart="0dp"
         >
 
-      <FrameLayout
+      <LinearLayout
           android:layout_width="match_parent"
           android:layout_height="match_parent"
+          android:gravity="center"
           >
 
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:padding="@dimen/standard_half"
             android:src="@drawable/ic_logo"
             />
 
-      </FrameLayout>
+      </LinearLayout>
 
     </androidx.appcompat.widget.Toolbar>
 
   </com.google.android.material.appbar.AppBarLayout>
 
-  <androidx.recyclerview.widget.RecyclerView
-      android:id="@+id/listMovies"
+  <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:orientation="vertical"
-      android:overScrollMode="never"
+      android:paddingEnd="@dimen/standard_half"
+      android:paddingStart="@dimen/standard_half"
       app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-      app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-      tools:listitem="@layout/movie_list_item"
-      />
+      >
+
+    <EditText
+        android:id="@+id/inputSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/standard_half"
+        android:background="@drawable/input_background"
+        android:drawableEnd="@drawable/ic_search"
+        android:fontFamily="@font/ubuntu_light"
+        android:hint="@string/looking_for_something_specific"
+        android:padding="@dimen/standard"
+        android:textSize="16sp"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listMovies"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:overScrollMode="never"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/movie_list_item"
+        />
+
+  </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

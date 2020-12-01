@@ -2,6 +2,7 @@ package com.movies.app.ui.movie
 
 import com.movies.app.common.model.Loading
 import com.movies.app.common.model.Model
+import com.movies.app.data.api.model.Movie
 import com.movies.app.data.repository.MovieRepository
 import com.movies.app.misc.flatMapToViewState
 import com.movies.app.misc.switchNavigationState
@@ -50,7 +51,7 @@ class MoviePresenter @Inject constructor(
     result: MovieResult
   ): MovieUIState = when (result) {
     is LoadingPartialViewState -> state.copy(
-        movies = state.movies + listOf(Loading())
+        movies = state.movies?.plus(listOf(Loading()))
     )
     is ErrorPartialViewState -> state.copy(
         error = result.error
@@ -60,19 +61,18 @@ class MoviePresenter @Inject constructor(
         movies = combineResults(state.movies, result.movies)
     )
     is MovieDetailsPartialViewState -> state.copy(
-        movieDetails = result.movieDetails
+        movies = null,
+        movieDetails = result.movieDetails,
     )
   }
 
   private fun combineResults(
-    previous: List<Model<Int>>,
+    previous: List<Model<Int>>?,
     new: List<Model<Int>>
   ): List<Model<Int>> {
     val results = ArrayList<Model<Int>>()
-    results.addAll(previous)
+    previous?.let { results.addAll(it.filterIsInstance<Movie>()) }
     results.addAll(new)
-    // Remove loading
-    results.removeAt(previous.size - 1)
     return results
   }
 }

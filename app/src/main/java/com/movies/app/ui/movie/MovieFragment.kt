@@ -37,7 +37,9 @@ class MovieFragment : BaseFragment(R.layout.movie_fragment), MovieView {
 
   override fun update(uiState: MovieUIState) {
     // Movies state
-    movieAdapter.items = uiState.movies
+    uiState.movies?.let {
+      movieAdapter.items = it
+    }
 
     // Next page state
     loadMoreScrollListener.nextPage = uiState.nextPage
