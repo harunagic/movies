@@ -14,7 +14,7 @@ class MovieRepository @Inject constructor(
   private val apiService: ApiService,
   private val movieDao: MovieDao,
   private val movieMapper: MovieMapper
-) {
+) : BaseRepository() {
 
   /**
    * @param forceRemote if true list of movies will be loaded from API

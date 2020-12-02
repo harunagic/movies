@@ -1,8 +1,8 @@
 package com.movies.app.ui.base
 
 import androidx.recyclerview.widget.RecyclerView
-import com.movies.app.common.delegate.AdapterItemsDelegate
-import com.movies.app.common.model.Model
+import com.movies.app.ui.common.delegate.AdapterItemsDelegate
+import com.movies.app.ui.common.model.Model
 
 abstract class BaseAdapter<T : Model<*>, VH : BaseViewHolder<T, *>> : RecyclerView.Adapter<VH>() {
 

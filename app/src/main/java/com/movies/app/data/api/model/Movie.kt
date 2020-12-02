@@ -1,7 +1,7 @@
 package com.movies.app.data.api.model
 
 import com.google.gson.annotations.SerializedName
-import com.movies.app.common.model.Model
+import com.movies.app.ui.common.model.Model
 
 data class Movie(
   @SerializedName("id")
