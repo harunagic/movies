@@ -13,7 +13,7 @@ class SplashPresenter @Inject constructor() : BasePresenter<SplashView, SplashRe
         .map { AnimateSplashResult() }
 
     val finishObs = intent(SplashView::onCreated)
-        .delay(10, SECONDS)
+        .delay(1, SECONDS)
         .map { FinishSplashResult() }
 
     subscribeForStateUpdates(

@@ -7,11 +7,9 @@ import javax.inject.Inject
 class MovieMapper @Inject constructor(
   private val genreMapper: GenreMapper,
   private val languageMapper: LanguageMapper
-) {
+) : BaseMapper<Movie, MovieEntity>() {
 
-  fun toEntities(data: List<Movie>?) = data?.map { toEntity(it) } ?: listOf()
-
-  fun toEntity(data: Movie) = MovieEntity(
+  override fun toEntity(data: Movie) = MovieEntity(
       id = data.id,
       title = data.title,
       tagline = data.tagline,
@@ -24,9 +22,7 @@ class MovieMapper @Inject constructor(
       languages = languageMapper.toEntities(data.languages)
   )
 
-  fun toModels(data: List<MovieEntity>) = data.map { toModel(it) }
-
-  fun toModel(data: MovieEntity) = Movie(
+  override fun toModel(data: MovieEntity) = Movie(
       id = data.id,
       title = data.title,
       tagline = data.tagline,
