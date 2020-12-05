@@ -2,12 +2,13 @@ package com.movies.app.ui.screen.movie.adapter
 
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.jakewharton.rxbinding3.view.clicks
 import com.movies.app.R
 import com.movies.app.data.api.model.Movie
 import com.movies.app.ui.base.BaseViewHolder
 import kotlinx.android.synthetic.main.movie_list_item.view.imgPoster
+import kotlinx.android.synthetic.main.movie_list_item.view.rbVote
 import kotlinx.android.synthetic.main.movie_list_item.view.txtOverview
 import kotlinx.android.synthetic.main.movie_list_item.view.txtReleaseDate
 import kotlinx.android.synthetic.main.movie_list_item.view.txtTitle
@@ -48,10 +49,15 @@ class MovieViewHolder(
       itemView.txtOverview.text = it
     }
 
+    // Average vote
+    data.voteAverage?.let {
+      itemView.rbVote.progress = it.toInt()
+    }
+
     // Poster
     Glide.with(itemView)
         .load("https://image.tmdb.org/t/p/w500/${data.poster}")
-        .transition(withCrossFade())
+        .diskCacheStrategy(DiskCacheStrategy.ALL)
         .into(itemView.imgPoster)
   }
 }

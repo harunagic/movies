@@ -22,6 +22,7 @@
         android:scaleType="centerCrop"
         />
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -48,18 +49,33 @@
           android:layout_marginBottom="@dimen/standard_half"
           android:fontFamily="@font/ubuntu_font"
           android:textColor="?colorOnSurface"
-          android:textSize="18sp"
+          android:textSize="16sp"
           />
 
       <TextView
           android:id="@+id/txtOverview"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
+          android:layout_marginBottom="@dimen/standard_half"
           android:ellipsize="marquee"
           android:fontFamily="@font/ubuntu_font"
-          android:lines="4"
-          android:textColor="?colorSecondaryVariant"
+          android:maxLines="3"
+          android:textColor="?colorOnSurface"
           android:textSize="16sp"
+          />
+
+      <RatingBar
+          android:id="@+id/rbVote"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:numStars="5"
+          android:rating="3"
+          android:scaleX="0.5"
+          android:scaleY="0.5"
+          android:stepSize="0.5"
+          android:transformPivotX="0dp"
+          android:transformPivotY="0dp"
+          style="?android:attr/ratingBarStyleIndicator"
           />
 
     </LinearLayout>

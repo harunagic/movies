@@ -5,7 +5,7 @@ import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.android.material.chip.Chip
 import com.jakewharton.rxbinding3.view.clicks
 import com.movies.app.R
@@ -14,7 +14,18 @@ import com.movies.app.di.component.AppComponent
 import com.movies.app.ui.base.BaseFragment
 import florent37.github.com.rxlifecycle.RxLifecycle
 import io.reactivex.Observable
-import kotlinx.android.synthetic.main.movie_details_fragment.*
+import kotlinx.android.synthetic.main.movie_details_fragment.btnBack
+import kotlinx.android.synthetic.main.movie_details_fragment.groupGenres
+import kotlinx.android.synthetic.main.movie_details_fragment.groupLanguages
+import kotlinx.android.synthetic.main.movie_details_fragment.imgBackdrop
+import kotlinx.android.synthetic.main.movie_details_fragment.imgPoster
+import kotlinx.android.synthetic.main.movie_details_fragment.loader
+import kotlinx.android.synthetic.main.movie_details_fragment.rbVote
+import kotlinx.android.synthetic.main.movie_details_fragment.txtOverview
+import kotlinx.android.synthetic.main.movie_details_fragment.txtReleaseDate
+import kotlinx.android.synthetic.main.movie_details_fragment.txtRuntime
+import kotlinx.android.synthetic.main.movie_details_fragment.txtTagline
+import kotlinx.android.synthetic.main.movie_details_fragment.txtTitle
 import java.text.SimpleDateFormat
 import java.util.Locale
 import javax.inject.Inject
@@ -117,13 +128,13 @@ class MovieDetailsFragment : BaseFragment(R.layout.movie_details_fragment), Movi
     // Backdrop
     Glide.with(this)
         .load("https://image.tmdb.org/t/p/w500/${movie.backdrop}")
-        .transition(DrawableTransitionOptions.withCrossFade())
+        .diskCacheStrategy(DiskCacheStrategy.ALL)
         .into(imgBackdrop)
 
     // Poster
     Glide.with(this)
         .load("https://image.tmdb.org/t/p/w500/${movie.poster}")
-        .transition(DrawableTransitionOptions.withCrossFade())
+        .diskCacheStrategy(DiskCacheStrategy.ALL)
         .into(imgPoster)
   }
 }
