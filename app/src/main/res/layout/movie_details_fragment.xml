@@ -94,11 +94,24 @@
             android:textSize="36sp"
             />
 
+        <RatingBar
+            android:id="@+id/rbVote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:rating="3"
+            android:scaleX="0.7"
+            android:scaleY="0.7"
+            android:stepSize="0.5"
+            android:transformPivotX="0dp"
+            android:transformPivotY="0dp"
+            style="?android:attr/ratingBarStyleIndicator"
+            />
+
         <TextView
             android:id="@+id/txtReleaseDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/standard_half"
             android:fontFamily="@font/ubuntu_font"
             android:textColor="?colorOnSurface"
             android:textSize="20sp"

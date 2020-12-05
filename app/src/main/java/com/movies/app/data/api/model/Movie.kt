@@ -23,7 +23,9 @@ data class Movie(
   @SerializedName("genres")
   val genres: ArrayList<Genre>?,
   @SerializedName("spoken_languages")
-  val languages: ArrayList<Language>?
+  val languages: ArrayList<Language>?,
+  @SerializedName("vote_average")
+  val voteAverage: Double? = 0.0
 ) : Model<Int> {
   override fun id(): Int = id
 }

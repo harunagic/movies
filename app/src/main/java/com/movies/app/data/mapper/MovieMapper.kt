@@ -19,7 +19,8 @@ class MovieMapper @Inject constructor(
       overview = data.overview,
       releaseDate = data.releaseDate,
       genres = genreMapper.toEntities(data.genres),
-      languages = languageMapper.toEntities(data.languages)
+      languages = languageMapper.toEntities(data.languages),
+      voteAverage = data.voteAverage
   )
 
   override fun toModel(data: MovieEntity) = Movie(
@@ -32,6 +33,7 @@ class MovieMapper @Inject constructor(
       overview = data.overview,
       releaseDate = data.releaseDate,
       genres = genreMapper.toModels(data.genres),
-      languages = languageMapper.toModels(data.languages)
+      languages = languageMapper.toModels(data.languages),
+      voteAverage = data.voteAverage
   )
 }

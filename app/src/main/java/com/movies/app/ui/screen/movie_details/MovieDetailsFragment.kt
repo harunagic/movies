@@ -66,6 +66,12 @@ class MovieDetailsFragment : BaseFragment(R.layout.movie_details_fragment), Movi
       txtTitle.text = it
     }
 
+    // Average vote
+    rbVote.isVisible = movie.voteAverage != null
+    movie.voteAverage?.let {
+      rbVote.progress = it.toInt()
+    }
+
     // Release date
     txtReleaseDate.isVisible = !movie.releaseDate.isNullOrBlank()
     movie.releaseDate?.let {

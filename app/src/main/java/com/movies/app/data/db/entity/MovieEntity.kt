@@ -18,5 +18,6 @@ data class MovieEntity(
   @Embedded
   val genres: ArrayList<GenreEntity>?,
   @Embedded
-  val languages: ArrayList<LanguageEntity>?
+  val languages: ArrayList<LanguageEntity>?,
+  val voteAverage: Double? = 0.0
 )
