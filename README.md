@@ -20,7 +20,8 @@ App uses [Square](https://github.com/square/java-code-styles) coding styles.
 
 Screenshots
 -----------
-<img src="screenshots/ss1.png" width="250" style="padding-right:10px"/><img src="screenshots/ss2.png" width="250" style="padding-right:10px"/><img src="screenshots/ss3.png" width="250" style="padding-right:10px"/>
+| [![Screen1](https://raw.githubusercontent.com/harunagic/movies/master/screenshots/ss1.png)]() | [![Screen2](https://raw.githubusercontent.com/harunagic/movies/master/screenshots/ss2.png)]() | [![Screen3](https://raw.githubusercontent.com/harunagic/movies/master/screenshots/ss3.png)]() |
+|:---:|:---:|:---:|:---:|:---:|
 
 Architecture
 --------------
@@ -36,7 +37,7 @@ MVI works in a very different way compared to its distant relatives, MVC, MVP or
 
 **Repository modules** handle data operations. They provide a clean API so that the rest of the app can retrieve this data easily. They know where to get the data from and what API calls to make when data is updated. You can consider repositories to be mediators between different data sources, such as persistent models, web services, and caches.
 
-<img align="center" src="screenshots/diagram.png" />
+![Repository patternb](https://raw.githubusercontent.com/harunagic/movies/master/screenshots/diagram.png "Repository pattern")
 
 Libraries
 --------------
@@ -45,4 +46,3 @@ Libraries
 * [Dagger 2](https://github.com/google/dagger) Used for dependency injection
 * [Glide](https://github.com/bumptech/glide) Used for image loading
 * [Navigation](https://developer.android.com/guide/navigation/navigation-getting-started) Handle everything needed for in-app navigation
-* [ViewModel](https://www.google.com/aclk?sa=l&ai=DChcSEwjF_9mdi9rsAhWFGHsKHfBeCUMYABAAGgJsZQ&sig=AOD64_3JpFaMS2BFPlkU6waX4Jkw3UVD1g&q&adurl&ved=2ahUKEwil39Cdi9rsAhUK_CoKHaWPDa8Q0Qx6BAgwEAE) Store UI-related data that isn't destroyed on app rotations. Easily schedule asynchronous tasks for optimal execution
