@@ -74,6 +74,12 @@ class MovieDetailsFragment : BaseFragment(R.layout.movie_details_fragment), Movi
       }
     }
 
+    // Runtime
+    txtRuntime.isVisible = !movie.runtime.isNullOrBlank()
+    movie.runtime?.let {
+      txtRuntime.text = "${it}min"
+    }
+
     // Genres
     groupGenres.isVisible = !movie.genres.isNullOrEmpty()
     movie.genres?.forEach {

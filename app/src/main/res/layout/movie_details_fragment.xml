@@ -105,6 +105,16 @@
             />
 
         <TextView
+            android:id="@+id/txtRuntime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/standard_half"
+            android:fontFamily="@font/ubuntu_font"
+            android:textColor="?colorOnSurface"
+            android:textSize="18sp"
+            />
+
+        <TextView
             android:id="@+id/txtTagline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
