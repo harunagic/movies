@@ -26,6 +26,7 @@ import kotlinx.android.synthetic.main.movie_details_fragment.txtReleaseDate
 import kotlinx.android.synthetic.main.movie_details_fragment.txtRuntime
 import kotlinx.android.synthetic.main.movie_details_fragment.txtTagline
 import kotlinx.android.synthetic.main.movie_details_fragment.txtTitle
+import kotlinx.android.synthetic.main.movie_details_fragment.txtToolbarTitle
 import java.text.SimpleDateFormat
 import java.util.Locale
 import javax.inject.Inject
@@ -73,8 +74,10 @@ class MovieDetailsFragment : BaseFragment(R.layout.movie_details_fragment), Movi
   private fun showMovieInfo(movie: Movie) {
     // Title
     txtTitle.isVisible = !movie.title.isNullOrBlank()
+    txtToolbarTitle.isVisible = !movie.title.isNullOrBlank()
     movie.title?.let {
       txtTitle.text = it
+      txtToolbarTitle.text = it
     }
 
     // Average vote
