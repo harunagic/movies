@@ -21,7 +21,7 @@ App uses [Square](https://github.com/square/java-code-styles) coding styles.
 Screenshots
 -----------
 | [![Screen1](https://raw.githubusercontent.com/harunagic/movies/master/screenshots/ss1.png)]() | [![Screen2](https://raw.githubusercontent.com/harunagic/movies/master/screenshots/ss2.png)]() | [![Screen3](https://raw.githubusercontent.com/harunagic/movies/master/screenshots/ss3.png)]() |
-|:---:|:---:|:---:|:---:|:---:|
+|:---:|:---:|:---:|
 
 Architecture
 --------------
