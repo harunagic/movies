@@ -4,9 +4,9 @@ import com.movies.app.App
 import com.movies.app.di.module.ApiModule
 import com.movies.app.di.module.AppModule
 import com.movies.app.di.module.DatabaseModule
-import com.movies.app.ui.movie.MovieFragment
-import com.movies.app.ui.movie_details.MovieDetailsFragment
-import com.movies.app.ui.splash.SplashFragment
+import com.movies.app.ui.screen.movie.MovieFragment
+import com.movies.app.ui.screen.movie_details.MovieDetailsFragment
+import com.movies.app.ui.screen.splash.SplashFragment
 import dagger.Component
 import javax.inject.Singleton
 

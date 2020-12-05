@@ -5,18 +5,14 @@ import com.movies.app.data.db.entity.GenreEntity
 import com.movies.app.data.db.entity.LanguageEntity
 import javax.inject.Inject
 
-class GenreMapper @Inject constructor() {
+class GenreMapper @Inject constructor() : BaseMapper<Genre, GenreEntity>() {
 
-  fun toEntities(data: List<Genre>?) = data?.map { toEntity(it) } as ArrayList<GenreEntity>?
-
-  fun toEntity(data: Genre) = GenreEntity(
+  override fun toEntity(data: Genre) = GenreEntity(
       id = data.id,
       name = data.name
   )
 
-  fun toModels(data: List<GenreEntity>?) = data?.map { toModel(it) } as ArrayList<Genre>?
-
-  fun toModel(data: GenreEntity) = Genre(
+  override fun toModel(data: GenreEntity) = Genre(
       id = data.id,
       name = data.name
   )
